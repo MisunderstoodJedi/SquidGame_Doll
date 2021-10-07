@@ -1,3 +1,9 @@
+#!/usr/bin/env python
+
+__author__      = "MisunderstoodJedi"
+__credits__   = ["Insert Name(s) Here"]
+__status__  =  "A work in progress"
+
 ### Target Actions ###
 # [X] Press button to start
 # [o] Music plays (Untested)
@@ -15,6 +21,7 @@ from pygame import mixer
 import multiprocessing
 from signal import pause
 
+# Load Music #
 mixer.init()
 music = mixer.Sound('/home/pi/scripts/squidgame_doll_music.wav')
 scan = mixer.Sound('/home/pi/scripts/squidgame_doll_scan.wav')
@@ -33,6 +40,7 @@ def SetAngle(angle):
     GPIO.output(3, False)
     pwm.ChangeDutyCycle(0)
 
+# Initial button press to initiate actions #
 def button_pressed(channel):
     #t1.start()
     #time.sleep(5)
@@ -44,16 +52,16 @@ def button_pressed(channel):
 
     game_start()
     time.sleep(5)
-    detect_movement()
+    detect_movement() # Needs to only run for 5 seconds
     time.sleep(5)
     reset_game()
     
 def game_start():
     print("Game Started")
     print("Red Light")
-    music.play()
-    time.sleep(5)
-    SetAngle(90)
+    music.play() # Doll sings her song
+    time.sleep(5) # Untested but I do not know yet if python waits for the sound to stop if not wait 5 seconds while it's playing
+    SetAngle(90)  # Ratate head (amounts etc to be "tuned" in when serve's arrive
 
 def detect_movement():
     print("Scanning Movement")
@@ -63,8 +71,8 @@ def detect_movement():
     # gunshot.play()
     # LED Turn Red
 
-def reset_game():
-    SetAngle(90)
+def reset_game(): # Resets everything and awaits another button press
+    SetAngle(0)
     t3.terminate()
     print("Green Light")
 
