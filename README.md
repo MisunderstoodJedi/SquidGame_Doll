@@ -1,3 +1,7 @@
+## This project is long dead now ##
+I had some asparations of finishing it but lost interest.  It's here incase anyone wan't tp pick it up or laugh at by bad code. 
+
+
 Hello and Welcome,
 
 After watching the widly popular seried squid game on Netflix I have decided to try my hand at a functioning doll from the first game in the series, Red Light, Green Light.
